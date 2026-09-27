@@ -1,0 +1,2234 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sáchica Magazine | Revista Turística</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        :root{
+            --cafe:#24140d;
+            --cafe2:#4a2c1c;
+            --cafe3:#70452b;
+            --tierra:#986b43;
+            --terracota:#b85c38;
+            --dorado:#d9a441;
+            --dorado-claro:#f0ca72;
+            --beige:#ead7bb;
+            --crema:#f5ead9;
+            --blanco:#ffffff;
+            --texto:#4a392d;
+            --gris:#75685e;
+        }
+
+        html{
+            scroll-behavior:smooth;
+        }
+
+        body{
+            font-family:'Montserrat',sans-serif;
+            background:var(--crema);
+            color:var(--texto);
+            overflow-x:hidden;
+        }
+
+        a{
+            text-decoration:none;
+            color:inherit;
+        }
+
+        img{
+            width:100%;
+            display:block;
+        }
+
+        .contenedor{
+            width:min(1250px,92%);
+            margin:auto;
+        }
+
+        .barra-superior{
+            background:var(--cafe);
+            color:var(--beige);
+            padding:9px 0;
+            font-size:11px;
+            letter-spacing:2px;
+        }
+
+        .barra-contenido{
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            gap:20px;
+        }
+
+        .cabecera{
+            background:
+                radial-gradient(
+                    circle at top right,
+                    rgba(217,164,65,.22),
+                    transparent 35%
+                ),
+                linear-gradient(
+                    135deg,
+                    #24140d,
+                    #4a2c1c
+                );
+
+            padding:35px 0 75px;
+            position:relative;
+            overflow:hidden;
+        }
+
+        .cabecera::after{
+            content:"";
+            position:absolute;
+            left:0;
+            bottom:-1px;
+            width:100%;
+            height:75px;
+            background:var(--crema);
+
+            clip-path:polygon(
+                0 100%,
+                0 72%,
+                10% 50%,
+                20% 72%,
+                31% 40%,
+                43% 70%,
+                55% 34%,
+                68% 68%,
+                79% 45%,
+                90% 70%,
+                100% 44%,
+                100% 100%
+            );
+        }
+
+        .marca{
+            text-align:center;
+            position:relative;
+            z-index:3;
+        }
+
+        .marca small{
+            color:var(--dorado-claro);
+            font-weight:800;
+            letter-spacing:5px;
+            font-size:10px;
+        }
+
+        .marca h1{
+            font-family:'Playfair Display',serif;
+            color:white;
+            font-size:clamp(55px,9vw,105px);
+            line-height:.95;
+            margin:10px 0;
+        }
+
+        .marca h1 span{
+            color:var(--dorado-claro);
+        }
+
+        .marca p{
+            color:var(--beige);
+            letter-spacing:4px;
+            font-size:11px;
+        }
+
+        .menu{
+            position:sticky;
+            top:0;
+            z-index:1000;
+            background:rgba(255,255,255,.96);
+            box-shadow:0 8px 25px rgba(50,25,10,.1);
+        }
+
+        .menu-contenido{
+            min-height:72px;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            gap:25px;
+        }
+
+        .logo{
+            font-family:'Playfair Display',serif;
+            font-size:24px;
+            font-weight:800;
+            color:var(--cafe2);
+        }
+
+        .logo span{
+            color:var(--terracota);
+        }
+
+        .menu ul{
+            list-style:none;
+            display:flex;
+            align-items:center;
+            gap:18px;
+        }
+
+        .menu a{
+            color:var(--cafe2);
+            font-size:12px;
+            font-weight:700;
+            transition:.3s;
+        }
+
+        .menu a:hover{
+            color:var(--terracota);
+        }
+
+        .menu-btn{
+            display:none;
+            background:none;
+            border:none;
+            font-size:28px;
+            cursor:pointer;
+            color:var(--cafe2);
+        }
+
+        .seccion{
+            padding:90px 0;
+        }
+
+        .titulo{
+            text-align:center;
+            max-width:800px;
+            margin:0 auto 50px;
+        }
+
+        .titulo small{
+            display:block;
+            color:var(--terracota);
+            font-size:10px;
+            font-weight:800;
+            letter-spacing:4px;
+            margin-bottom:10px;
+        }
+
+        .titulo h2{
+            font-family:'Playfair Display',serif;
+            font-size:clamp(38px,5vw,58px);
+            color:var(--cafe2);
+            line-height:1.05;
+        }
+
+        .titulo p{
+            color:var(--gris);
+            margin-top:15px;
+            line-height:1.8;
+            font-size:14px;
+        }
+
+        .portada{
+            padding:45px 0 90px;
+        }
+
+        .edicion{
+            display:flex;
+            justify-content:space-between;
+            gap:20px;
+            color:var(--terracota);
+            font-size:10px;
+            font-weight:800;
+            letter-spacing:2px;
+            padding-bottom:15px;
+            border-bottom:2px solid var(--cafe2);
+            margin-bottom:25px;
+        }
+
+        .portada-principal{
+            min-height:650px;
+            position:relative;
+            border-radius:30px;
+            overflow:hidden;
+            box-shadow:0 25px 60px rgba(60,35,20,.25);
+        }
+
+        .portada-principal img{
+            position:absolute;
+            width:100%;
+            height:100%;
+            object-fit:cover;
+        }
+
+        .portada-principal::after{
+            content:"";
+            position:absolute;
+            inset:0;
+            background:
+                linear-gradient(
+                    to top,
+                    rgba(36,20,13,.95),
+                    rgba(36,20,13,.05) 75%
+                );
+        }
+
+        .portada-texto{
+            position:absolute;
+            left:50px;
+            right:50px;
+            bottom:50px;
+            z-index:5;
+            color:white;
+        }
+
+        .etiqueta{
+            display:inline-block;
+            padding:8px 15px;
+            background:var(--terracota);
+            border-radius:30px;
+            font-size:9px;
+            font-weight:800;
+            letter-spacing:2px;
+            margin-bottom:15px;
+        }
+
+        .portada-texto h2{
+            font-family:'Playfair Display',serif;
+            font-size:clamp(40px,6vw,70px);
+            line-height:1;
+            max-width:850px;
+        }
+
+        .portada-texto p{
+            max-width:700px;
+            color:var(--beige);
+            line-height:1.8;
+            margin-top:18px;
+        }
+
+        .editorial{
+            background:white;
+        }
+
+        .editorial-grid{
+            display:grid;
+            grid-template-columns:.8fr 1.2fr;
+            gap:50px;
+            align-items:center;
+        }
+
+        .editorial-imagen img{
+            height:500px;
+            object-fit:cover;
+            border-radius:30px;
+            box-shadow:0 25px 55px rgba(60,35,20,.2);
+        }
+
+        .editorial-texto{
+            background:var(--crema);
+            padding:50px;
+            border-radius:30px;
+        }
+
+        .editorial-texto small{
+            color:var(--terracota);
+            font-size:10px;
+            letter-spacing:4px;
+            font-weight:800;
+        }
+
+        .editorial-texto h2{
+            font-family:'Playfair Display',serif;
+            font-size:45px;
+            color:var(--cafe2);
+            margin:12px 0 20px;
+        }
+
+        .editorial-texto p{
+            color:var(--gris);
+            line-height:1.9;
+            margin-bottom:15px;
+            font-size:14px;
+        }
+
+        .contenido{
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--cafe),
+                    var(--cafe2),
+                    var(--cafe3)
+                );
+
+            color:white;
+        }
+
+        .contenido .titulo h2{
+            color:white;
+        }
+
+        .contenido .titulo small{
+            color:var(--dorado-claro);
+        }
+
+        .contenido .titulo p{
+            color:var(--beige);
+        }
+
+        .indice-grid{
+            display:grid;
+            grid-template-columns:repeat(3,1fr);
+            gap:20px;
+        }
+
+        .indice-item{
+            background:rgba(255,255,255,.08);
+            border:1px solid rgba(240,202,114,.25);
+            border-radius:22px;
+            padding:25px;
+            transition:.3s;
+        }
+
+        .indice-item:hover{
+            transform:translateY(-7px);
+            background:rgba(255,255,255,.13);
+        }
+
+        .indice-numero{
+            color:var(--dorado-claro);
+            font-family:'Playfair Display',serif;
+            font-size:35px;
+            font-weight:800;
+        }
+
+        .indice-item h3{
+            margin:8px 0;
+            font-size:16px;
+        }
+
+        .indice-item p{
+            color:var(--beige);
+            font-size:12px;
+            line-height:1.7;
+        }
+
+        .informacion{
+            background:white;
+        }
+
+        .info-grid{
+            display:grid;
+            grid-template-columns:repeat(3,1fr);
+            gap:25px;
+        }
+
+        .info-card{
+            background:var(--crema);
+            padding:30px;
+            border-radius:25px;
+            border:1px solid rgba(112,69,43,.12);
+            box-shadow:0 12px 30px rgba(60,35,20,.08);
+            transition:.35s;
+        }
+
+        .info-card:hover{
+            transform:translateY(-7px);
+            box-shadow:0 20px 45px rgba(60,35,20,.14);
+        }
+
+        .info-icono{
+            width:60px;
+            height:60px;
+            border-radius:50%;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            background:var(--cafe2);
+            color:white;
+            font-size:28px;
+            margin-bottom:18px;
+        }
+
+        .info-card span{
+            color:var(--terracota);
+            font-size:9px;
+            font-weight:800;
+            letter-spacing:2px;
+        }
+
+        .info-card h3{
+            font-family:'Playfair Display',serif;
+            color:var(--cafe2);
+            font-size:23px;
+            margin:8px 0 12px;
+        }
+
+        .info-card p,
+        .info-card li{
+            color:var(--gris);
+            font-size:13px;
+            line-height:1.8;
+        }
+
+        .info-card ul{
+            padding-left:18px;
+            margin-top:8px;
+        }
+
+        .mapa-box{
+            margin-top:40px;
+            background:var(--cafe2);
+            border-radius:30px;
+            padding:40px;
+            display:grid;
+            grid-template-columns:1fr 1fr;
+            gap:40px;
+            color:white;
+        }
+
+        .mapa-texto h3{
+            font-family:'Playfair Display',serif;
+            font-size:36px;
+            margin-bottom:15px;
+        }
+
+        .mapa-texto p{
+            color:var(--beige);
+            line-height:1.8;
+        }
+
+        .mapa-visual{
+            min-height:280px;
+            background:
+                radial-gradient(
+                    circle,
+                    var(--dorado-claro) 0 8px,
+                    transparent 9px
+                ),
+                linear-gradient(
+                    135deg,
+                    #d5b788,
+                    #94724d
+                );
+
+            border-radius:25px;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            text-align:center;
+            color:var(--cafe);
+            font-weight:800;
+            padding:30px;
+        }
+
+        .atractivos{
+            background:var(--crema);
+        }
+
+        .tarjetas{
+            display:grid;
+            grid-template-columns:repeat(3,1fr);
+            gap:25px;
+        }
+
+        .tarjeta{
+            background:white;
+            border-radius:25px;
+            overflow:hidden;
+            box-shadow:0 15px 40px rgba(60,35,20,.12);
+            transition:.4s;
+        }
+
+        .tarjeta:hover{
+            transform:translateY(-10px);
+        }
+
+        .tarjeta-imagen{
+            height:260px;
+            position:relative;
+            overflow:hidden;
+        }
+
+        .tarjeta-imagen img{
+            height:100%;
+            object-fit:cover;
+            transition:.6s;
+        }
+
+        .tarjeta:hover img{
+            transform:scale(1.08);
+        }
+
+        .tarjeta-imagen span{
+            position:absolute;
+            left:15px;
+            bottom:15px;
+            background:rgba(36,20,13,.88);
+            color:var(--dorado-claro);
+            padding:7px 13px;
+            border-radius:20px;
+            font-size:9px;
+            letter-spacing:2px;
+            font-weight:800;
+        }
+
+        .tarjeta-contenido{
+            padding:25px;
+        }
+
+        .tarjeta-contenido h3{
+            font-family:'Playfair Display',serif;
+            font-size:24px;
+            color:var(--cafe2);
+            margin-bottom:10px;
+        }
+
+        .tarjeta-contenido p{
+            color:var(--gris);
+            line-height:1.8;
+            font-size:13px;
+        }
+
+        .actividades{
+            background:var(--cafe);
+            color:white;
+        }
+
+        .actividades .titulo h2{
+            color:white;
+        }
+
+        .actividades .titulo small{
+            color:var(--dorado-claro);
+        }
+
+        .actividades .titulo p{
+            color:var(--beige);
+        }
+
+        .actividad-grid{
+            display:grid;
+            grid-template-columns:repeat(4,1fr);
+            gap:20px;
+        }
+
+        .actividad{
+            text-align:center;
+            background:rgba(255,255,255,.08);
+            border:1px solid rgba(240,202,114,.2);
+            border-radius:25px;
+            padding:35px 20px;
+        }
+
+        .actividad-icono{
+            font-size:45px;
+            margin-bottom:15px;
+        }
+
+        .actividad h3{
+            color:var(--dorado-claro);
+            font-size:16px;
+            margin-bottom:10px;
+        }
+
+        .actividad p{
+            color:var(--beige);
+            font-size:12px;
+            line-height:1.7;
+        }
+
+        .gastronomia{
+            background:white;
+        }
+
+        .gastronomia-grid{
+            display:grid;
+            grid-template-columns:1.3fr .7fr;
+            gap:30px;
+        }
+
+        .gastronomia-principal{
+            position:relative;
+            min-height:550px;
+            border-radius:30px;
+            overflow:hidden;
+        }
+
+        .gastronomia-principal img{
+            position:absolute;
+            width:100%;
+            height:100%;
+            object-fit:cover;
+        }
+
+        .gastronomia-principal::after{
+            content:"";
+            position:absolute;
+            inset:0;
+            background:linear-gradient(to top,rgba(36,20,13,.9),transparent 70%);
+        }
+
+        .gastronomia-texto{
+            position:absolute;
+            z-index:3;
+            left:35px;
+            right:35px;
+            bottom:35px;
+            color:white;
+        }
+
+        .gastronomia-texto h3{
+            font-family:'Playfair Display',serif;
+            font-size:40px;
+            margin-bottom:10px;
+        }
+
+        .gastronomia-texto p{
+            color:var(--beige);
+            line-height:1.8;
+        }
+
+        .gastronomia-lista{
+            display:flex;
+            flex-direction:column;
+            gap:20px;
+        }
+
+        .plato{
+            background:var(--crema);
+            border-radius:22px;
+            padding:25px;
+        }
+
+        .plato h3{
+            color:var(--cafe2);
+            font-family:'Playfair Display',serif;
+            font-size:24px;
+            margin-bottom:10px;
+        }
+
+        .plato p{
+            color:var(--gris);
+            line-height:1.8;
+            font-size:13px;
+        }
+
+        .cultura{
+            background:var(--crema);
+        }
+
+        .cultura-grid{
+            display:grid;
+            grid-template-columns:repeat(3,1fr);
+            gap:25px;
+        }
+
+        .cultura-card{
+            background:white;
+            border-radius:25px;
+            padding:35px;
+            text-align:center;
+            box-shadow:0 15px 35px rgba(60,35,20,.1);
+        }
+
+        .cultura-card div{
+            font-size:50px;
+        }
+
+        .cultura-card h3{
+            font-family:'Playfair Display',serif;
+            color:var(--cafe2);
+            font-size:25px;
+            margin:15px 0;
+        }
+
+        .cultura-card p{
+            color:var(--gris);
+            font-size:13px;
+            line-height:1.8;
+        }
+
+        .recomendaciones{
+            background:white;
+        }
+
+        .recomendaciones-grid{
+            display:grid;
+            grid-template-columns:repeat(3,1fr);
+            gap:20px;
+        }
+
+        .recomendacion{
+            display:flex;
+            gap:17px;
+            background:var(--crema);
+            border-radius:22px;
+            padding:25px;
+        }
+
+        .recomendacion-icono{
+            font-size:35px;
+        }
+
+        .recomendacion h3{
+            color:var(--cafe2);
+            font-size:16px;
+            margin-bottom:7px;
+        }
+
+        .recomendacion p{
+            color:var(--gris);
+            font-size:12px;
+            line-height:1.7;
+        }
+
+        .directorio{
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--cafe),
+                    var(--cafe3)
+                );
+
+            color:white;
+        }
+
+        .directorio .titulo h2{
+            color:white;
+        }
+
+        .directorio .titulo small{
+            color:var(--dorado-claro);
+        }
+
+        .directorio .titulo p{
+            color:var(--beige);
+        }
+
+        .directorio-grid{
+            display:grid;
+            grid-template-columns:repeat(3,1fr);
+            gap:25px;
+        }
+
+        .directorio-card{
+            background:rgba(255,255,255,.09);
+            border:1px solid rgba(255,255,255,.12);
+            padding:30px;
+            border-radius:25px;
+        }
+
+        .directorio-card span{
+            font-size:40px;
+        }
+
+        .directorio-card h3{
+            color:var(--dorado-claro);
+            margin:13px 0;
+        }
+
+        .directorio-card p{
+            color:var(--beige);
+            line-height:1.8;
+            font-size:13px;
+        }
+
+        .galeria{
+            background:var(--crema);
+        }
+
+        .galeria-grid{
+            display:grid;
+            grid-template-columns:2fr 1fr 1fr;
+            grid-template-rows:260px 260px;
+            gap:12px;
+        }
+
+        .foto{
+            border-radius:20px;
+            overflow:hidden;
+            position:relative;
+        }
+
+        .foto:first-child{
+            grid-row:1 / 3;
+        }
+
+        .foto img{
+            height:100%;
+            object-fit:cover;
+            transition:.6s;
+        }
+
+        .foto:hover img{
+            transform:scale(1.08);
+        }
+
+        .foto span{
+            position:absolute;
+            left:15px;
+            bottom:15px;
+            color:white;
+            font-weight:700;
+            background:rgba(36,20,13,.8);
+            padding:8px 13px;
+            border-radius:20px;
+            font-size:10px;
+        }
+
+        .contraportada{
+            min-height:650px;
+            position:relative;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            overflow:hidden;
+        }
+
+        .contraportada img{
+            position:absolute;
+            width:100%;
+            height:100%;
+            object-fit:cover;
+        }
+
+        .contraportada::after{
+            content:"";
+            position:absolute;
+            inset:0;
+            background:rgba(36,20,13,.72);
+        }
+
+        .contraportada-contenido{
+            position:relative;
+            z-index:3;
+            max-width:850px;
+            text-align:center;
+            color:white;
+            padding:30px;
+        }
+
+        .contraportada-contenido small{
+            color:var(--dorado-claro);
+            letter-spacing:5px;
+            font-weight:800;
+        }
+
+        .contraportada-contenido h2{
+            font-family:'Playfair Display',serif;
+            font-size:clamp(45px,7vw,80px);
+            line-height:1;
+            margin:20px 0;
+        }
+
+        .contraportada-contenido p{
+            color:var(--beige);
+            line-height:1.8;
+            font-size:15px;
+        }
+
+        footer{
+            background:#160d08;
+            color:var(--beige);
+            text-align:center;
+            padding:25px;
+            font-size:11px;
+        }
+
+        @media(max-width:1000px){
+
+            .menu ul{
+                position:absolute;
+                top:72px;
+                left:0;
+                width:100%;
+                background:white;
+                flex-direction:column;
+                padding:25px;
+                display:none;
+            }
+
+            .menu ul.activo{
+                display:flex;
+            }
+
+            .menu-btn{
+                display:block;
+            }
+
+            .editorial-grid,
+            .gastronomia-grid,
+            .mapa-box{
+                grid-template-columns:1fr;
+            }
+
+            .indice-grid,
+            .info-grid,
+            .tarjetas,
+            .cultura-grid,
+            .recomendaciones-grid,
+            .directorio-grid{
+                grid-template-columns:repeat(2,1fr);
+            }
+
+            .actividad-grid{
+                grid-template-columns:repeat(2,1fr);
+            }
+
+            .galeria-grid{
+                grid-template-columns:1fr 1fr;
+                grid-template-rows:350px 260px 260px;
+            }
+
+            .foto:first-child{
+                grid-column:1 / 3;
+                grid-row:auto;
+            }
+        }
+
+        @media(max-width:650px){
+
+            .barra-contenido{
+                justify-content:center;
+            }
+
+            .barra-contenido span:last-child{
+                display:none;
+            }
+
+            .portada-principal{
+                min-height:540px;
+            }
+
+            .portada-texto{
+                left:25px;
+                right:25px;
+                bottom:30px;
+            }
+
+            .editorial-texto{
+                padding:30px;
+            }
+
+            .indice-grid,
+            .info-grid,
+            .tarjetas,
+            .actividad-grid,
+            .cultura-grid,
+            .recomendaciones-grid,
+            .directorio-grid{
+                grid-template-columns:1fr;
+            }
+
+            .galeria-grid{
+                display:block;
+            }
+
+            .foto{
+                height:280px;
+                margin-bottom:12px;
+            }
+
+            .edicion{
+                font-size:8px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="barra-superior">
+
+        <div class="contenedor barra-contenido">
+            <span>BOYACÁ · COLOMBIA</span>
+            <span>REVISTA TURÍSTICA · SÁCHICA</span>
+            <span>HISTORIA · CULTURA · NATURALEZA</span>
+        </div>
+
+    </div>
+
+    <header class="cabecera">
+
+        <div class="contenedor marca">
+
+            <small>
+                REVISTA TURÍSTICA Y CULTURAL
+            </small>
+
+            <h1>
+                SÁCHICA<span>.</span>
+            </h1>
+
+            <p>
+                MAGAZINE
+            </p>
+
+        </div>
+
+    </header>
+
+    <nav class="menu">
+
+        <div class="contenedor menu-contenido">
+
+            <a href="#portada" class="logo">
+                Sáchica<span>Magazine</span>
+            </a>
+
+            <button class="menu-btn" id="menuBtn">
+                ☰
+            </button>
+
+            <ul id="menuLista">
+                <li><a href="#portada">Portada</a></li>
+                <li><a href="#editorial">Editorial</a></li>
+                <li><a href="#contenido">Contenido</a></li>
+                <li><a href="#informacion">Destino</a></li>
+                <li><a href="#atractivos">Atractivos</a></li>
+                <li><a href="#actividades">Actividades</a></li>
+                <li><a href="#gastronomia">Gastronomía</a></li>
+                <li><a href="#cultura">Cultura</a></li>
+                <li><a href="#galeria">Galería</a></li>
+            </ul>
+
+        </div>
+
+    </nav>
+
+    <main>
+
+        <section class="portada" id="portada">
+
+            <div class="contenedor">
+
+                <div class="edicion">
+                    <span>EDICIÓN 01</span>
+                    <span>SÁCHICA · BOYACÁ</span>
+                    <span>2026</span>
+                </div>
+
+                <article class="portada-principal">
+
+                    <img
+                        src="imagenes/principal.jpeg"
+                        alt="Sáchica Boyacá"
+                    >
+
+                    <div class="portada-texto">
+
+                        <span class="etiqueta">
+                            DESTINO TURÍSTICO
+                        </span>
+
+                        <h2>
+                            Sáchica, tierra de historia y cultura
+                        </h2>
+
+                        <p>
+                            Una revista para descubrir el patrimonio,
+                            las tradiciones, los atractivos turísticos
+                            y las experiencias que ofrece este
+                            municipio de Boyacá.
+                        </p>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+        <section class="seccion editorial" id="editorial">
+
+            <div class="contenedor editorial-grid">
+
+                <div class="editorial-imagen">
+
+                    <img
+                        src="imagenes/plaza.jpg"
+                        alt="Sáchica"
+                    >
+
+                </div>
+
+                <div class="editorial-texto">
+
+                    <small>
+                        02 · EDITORIAL
+                    </small>
+
+                    <h2>
+                        Bienvenido a Sáchica
+                    </h2>
+
+                    <p>
+                        Bienvenido a esta revista turística dedicada
+                        a mostrar algunos de los lugares, tradiciones
+                        y experiencias que hacen parte de Sáchica.
+                    </p>
+
+                    <p>
+                        El propósito de esta revista es presentar de
+                        una manera sencilla y visual información que
+                        permita conocer mejor el municipio y motivar
+                        a visitantes y habitantes a descubrir su
+                        patrimonio.
+                    </p>
+
+                    <p>
+                        Aquí encontrarás información general,
+                        atractivos turísticos, actividades,
+                        gastronomía, cultura, recomendaciones,
+                        servicios y fotografías del destino.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="seccion contenido" id="contenido">
+
+            <div class="contenedor">
+
+                <div class="titulo">
+
+                    <small>
+                        03 · TABLA DE CONTENIDO
+                    </small>
+
+                    <h2>
+                        Explora la revista
+                    </h2>
+
+                    <p>
+                        Utiliza estas secciones para conocer
+                        fácilmente todo el contenido.
+                    </p>
+
+                </div>
+
+                <div class="indice-grid">
+
+                    <a href="#informacion" class="indice-item">
+                        <div class="indice-numero">04</div>
+                        <h3>Información general</h3>
+                        <p>
+                            Ubicación, llegada, clima,
+                            historia y características.
+                        </p>
+                    </a>
+
+                    <a href="#atractivos" class="indice-item">
+                        <div class="indice-numero">05</div>
+                        <h3>Atractivos turísticos</h3>
+                        <p>
+                            Conoce algunos de los principales
+                            lugares para visitar.
+                        </p>
+                    </a>
+
+                    <a href="#actividades" class="indice-item">
+                        <div class="indice-numero">06</div>
+                        <h3>Actividades</h3>
+                        <p>
+                            Experiencias que puede realizar
+                            el visitante.
+                        </p>
+                    </a>
+
+                    <a href="#gastronomia" class="indice-item">
+                        <div class="indice-numero">07</div>
+                        <h3>Gastronomía</h3>
+                        <p>
+                            Sabores y preparaciones
+                            relacionadas con el destino.
+                        </p>
+                    </a>
+
+                    <a href="#cultura" class="indice-item">
+                        <div class="indice-numero">08</div>
+                        <h3>Cultura y tradiciones</h3>
+                        <p>
+                            Costumbres, fiestas y
+                            tradiciones locales.
+                        </p>
+                    </a>
+
+                    <a href="#galeria" class="indice-item">
+                        <div class="indice-numero">11</div>
+                        <h3>Galería</h3>
+                        <p>
+                            Fotografías de algunos
+                            lugares representativos.
+                        </p>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="seccion informacion" id="informacion">
+
+            <div class="contenedor">
+
+                <div class="titulo">
+
+                    <small>
+                        04 · INFORMACIÓN GENERAL
+                    </small>
+
+                    <h2>
+                        Conoce el destino
+                    </h2>
+
+                    <p>
+                        Información básica para entender dónde
+                        se encuentra Sáchica y qué puede encontrar
+                        el visitante.
+                    </p>
+
+                </div>
+
+                <div class="info-grid">
+
+                    <article class="info-card">
+
+                        <div class="info-icono">
+                            📍
+                        </div>
+
+                        <span>
+                            4.1 UBICACIÓN GEOGRÁFICA
+                        </span>
+
+                        <h3>
+                            ¿Dónde está Sáchica?
+                        </h3>
+
+                        <ul>
+                            <li>País: Colombia</li>
+                            <li>Departamento: Boyacá</li>
+                            <li>Municipio: Sáchica</li>
+                            <li>Mapa o referencia de ubicación</li>
+                            <li>Cercanía a ciudades principales</li>
+                        </ul>
+
+                    </article>
+
+                    <article class="info-card">
+
+                        <div class="info-icono">
+                            🚗
+                        </div>
+
+                        <span>
+                            4.2 CÓMO LLEGAR
+                        </span>
+
+                        <h3>
+                            Planea tu recorrido
+                        </h3>
+
+                        <ul>
+                            <li>Vías de acceso terrestre</li>
+                            <li>Tiempo estimado de viaje</li>
+                            <li>Transporte disponible</li>
+                            <li>Vehículo particular</li>
+                            <li>Transporte público</li>
+                        </ul>
+
+                    </article>
+
+                    <article class="info-card">
+
+                        <div class="info-icono">
+                            ☀️
+                        </div>
+
+                        <span>
+                            4.3 CLIMA
+                        </span>
+
+                        <h3>
+                            Antes de viajar
+                        </h3>
+
+                        <ul>
+                            <li>Tipo de clima</li>
+                            <li>Temperatura promedio</li>
+                            <li>Épocas de lluvia</li>
+                            <li>Épocas secas</li>
+                        </ul>
+
+                    </article>
+
+                    <article class="info-card">
+
+                        <div class="info-icono">
+                            📜
+                        </div>
+
+                        <span>
+                            4.4 RESEÑA HISTÓRICA
+                        </span>
+
+                        <h3>
+                            Una tierra con historia
+                        </h3>
+
+                        <p>
+                            Sáchica conserva elementos históricos,
+                            religiosos, arqueológicos y culturales
+                            que forman parte de la identidad
+                            del municipio.
+                        </p>
+
+                    </article>
+
+                    <article class="info-card">
+
+                        <div class="info-icono">
+                            ⛰️
+                        </div>
+
+                        <span>
+                            4.5 TERRITORIO
+                        </span>
+
+                        <h3>
+                            Paisajes y naturaleza
+                        </h3>
+
+                        <ul>
+                            <li>Relieve del municipio</li>
+                            <li>Paisajes predominantes</li>
+                            <li>Montañas y zonas rurales</li>
+                            <li>Recursos naturales</li>
+                        </ul>
+
+                    </article>
+
+                    <article class="info-card">
+
+                        <div class="info-icono">
+                            ⭐
+                        </div>
+
+                        <span>
+                            4.6 IMPORTANCIA TURÍSTICA
+                        </span>
+
+                        <h3>
+                            ¿Por qué conocerlo?
+                        </h3>
+
+                        <p>
+                            Su patrimonio, paisajes, tradición,
+                            gastronomía y diferentes atractivos
+                            convierten al municipio en un lugar
+                            de interés para quienes recorren Boyacá.
+                        </p>
+
+                    </article>
+
+                    <article class="info-card">
+
+                        <div class="info-icono">
+                            🎒
+                        </div>
+
+                        <span>
+                            4.7 PERFIL DEL VISITANTE
+                        </span>
+
+                        <h3>
+                            ¿Para quién es?
+                        </h3>
+
+                        <ul>
+                            <li>Turismo familiar</li>
+                            <li>Turismo cultural</li>
+                            <li>Turismo de naturaleza</li>
+                            <li>Visitantes interesados en historia</li>
+                        </ul>
+
+                    </article>
+
+                    <article class="info-card">
+
+                        <div class="info-icono">
+                            📅
+                        </div>
+
+                        <span>
+                            4.8 TEMPORADAS
+                        </span>
+
+                        <h3>
+                            ¿Cuándo visitar?
+                        </h3>
+
+                        <ul>
+                            <li>Temporada alta</li>
+                            <li>Temporada baja</li>
+                            <li>Eventos locales</li>
+                            <li>Fechas especiales</li>
+                        </ul>
+
+                    </article>
+
+                    <article class="info-card">
+
+                        <div class="info-icono">
+                            🏥
+                        </div>
+
+                        <span>
+                            4.9 SERVICIOS BÁSICOS
+                        </span>
+
+                        <h3>
+                            Servicios disponibles
+                        </h3>
+
+                        <ul>
+                            <li>Salud</li>
+                            <li>Seguridad</li>
+                            <li>Cajeros o bancos</li>
+                            <li>Internet y señal</li>
+                        </ul>
+
+                    </article>
+
+                    <article class="info-card">
+
+                        <div class="info-icono">
+                            🧑‍🌾
+                        </div>
+
+                        <span>
+                            4.10 CULTURA GENERAL
+                        </span>
+
+                        <h3>
+                            Vida local
+                        </h3>
+
+                        <ul>
+                            <li>Costumbres</li>
+                            <li>Forma de vida</li>
+                            <li>Agricultura</li>
+                            <li>Tradiciones</li>
+                        </ul>
+
+                    </article>
+
+                    <article class="info-card">
+
+                        <div class="info-icono">
+                            💡
+                        </div>
+
+                        <span>
+                            4.11 DATOS CURIOSOS
+                        </span>
+
+                        <h3>
+                            ¿Sabías que...?
+                        </h3>
+
+                        <p>
+                            Esta sección puede contener historias,
+                            datos poco conocidos, curiosidades y
+                            relatos relacionados con Sáchica.
+                        </p>
+
+                    </article>
+
+                    <article class="info-card">
+
+                        <div class="info-icono">
+                            ✅
+                        </div>
+
+                        <span>
+                            4.12 RECOMENDACIONES
+                        </span>
+
+                        <h3>
+                            Prepárate para visitar
+                        </h3>
+
+                        <ul>
+                            <li>Revisar el clima</li>
+                            <li>Llevar ropa adecuada</li>
+                            <li>Respetar el patrimonio</li>
+                            <li>Cuidar los espacios naturales</li>
+                        </ul>
+
+                    </article>
+
+                </div>
+
+                <div class="mapa-box">
+
+                    <div class="mapa-texto">
+
+                        <h3>
+                            Ubicación de Sáchica
+                        </h3>
+
+                        <p>
+                            En esta parte puedes colocar posteriormente
+                            el mapa interactivo del municipio con las
+                            rutas, vías de acceso y lugares turísticos.
+                        </p>
+
+                    </div>
+
+                    <div class="mapa-visual">
+                        📍 MAPA DE SÁCHICA<br>
+                        BOYACÁ · COLOMBIA
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="seccion atractivos" id="atractivos">
+
+            <div class="contenedor">
+
+                <div class="titulo">
+
+                    <small>
+                        05 · ATRACTIVOS TURÍSTICOS
+                    </small>
+
+                    <h2>
+                        Lugares para descubrir
+                    </h2>
+
+                    <p>
+                        Algunos de los sitios que puede conocer
+                        durante una visita a Sáchica.
+                    </p>
+
+                </div>
+
+                <div class="tarjetas">
+
+                    <article class="tarjeta">
+
+                        <div class="tarjeta-imagen">
+
+                            <img
+                                src="imagenes/templo.webp"
+                                alt="Templo Doctrinero"
+                            >
+
+                            <span>PATRIMONIO</span>
+
+                        </div>
+
+                        <div class="tarjeta-contenido">
+
+                            <h3>
+                                Templo Doctrinero
+                            </h3>
+
+                            <p>
+                                Uno de los lugares históricos y
+                                religiosos más representativos
+                                del municipio.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+                    <article class="tarjeta">
+
+                        <div class="tarjeta-imagen">
+
+                            <img
+                                src="imagenes/pinturas.webp"
+                                alt="Pinturas Rupestres"
+                            >
+
+                            <span>ARQUEOLOGÍA</span>
+
+                        </div>
+
+                        <div class="tarjeta-contenido">
+
+                            <h3>
+                                Pinturas Rupestres
+                            </h3>
+
+                            <p>
+                                Manifestaciones que conectan el
+                                territorio con su pasado
+                                precolombino.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+                    <article class="tarjeta">
+
+                        <div class="tarjeta-imagen">
+
+                            <img
+                                src="imagenes/piedra.jpg"
+                                alt="Piedra del Castigo"
+                            >
+
+                            <span>HISTORIA</span>
+
+                        </div>
+
+                        <div class="tarjeta-contenido">
+
+                            <h3>
+                                Piedra del Castigo
+                            </h3>
+
+                            <p>
+                                Elemento histórico situado dentro
+                                del entorno patrimonial del centro
+                                de Sáchica.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+                    <article class="tarjeta">
+
+                        <div class="tarjeta-imagen">
+
+                            <img
+                                src="imagenes/cruz.jpg"
+                                alt="Cruz Atrial"
+                            >
+
+                            <span>PATRIMONIO</span>
+
+                        </div>
+
+                        <div class="tarjeta-contenido">
+
+                            <h3>
+                                Cruz Atrial
+                            </h3>
+
+                            <p>
+                                Parte del conjunto histórico
+                                religioso del municipio.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+                    <article class="tarjeta">
+
+                        <div class="tarjeta-imagen">
+
+                            <img
+                                src="imagenes/calvario.jpg"
+                                alt="Monte Calvario"
+                            >
+
+                            <span>RELIGIÓN</span>
+
+                        </div>
+
+                        <div class="tarjeta-contenido">
+
+                            <h3>
+                                Monte Calvario
+                            </h3>
+
+                            <p>
+                                Espacio relacionado con tradición,
+                                peregrinación y paisaje.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+                    <article class="tarjeta">
+
+                        <div class="tarjeta-imagen">
+
+                            <img
+                                src="imagenes/dino.jpg"
+                                alt="Gondava"
+                            >
+
+                            <span>PREHISTORIA</span>
+
+                        </div>
+
+                        <div class="tarjeta-contenido">
+
+                            <h3>
+                                Mundo Prehistórico
+                            </h3>
+
+                            <p>
+                                Una experiencia relacionada con
+                                dinosaurios y la prehistoria
+                                de la región.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="seccion actividades" id="actividades">
+
+            <div class="contenedor">
+
+                <div class="titulo">
+
+                    <small>
+                        06 · ACTIVIDADES TURÍSTICAS
+                    </small>
+
+                    <h2>
+                        ¿Qué hacer en Sáchica?
+                    </h2>
+
+                    <p>
+                        La visita puede combinar cultura,
+                        naturaleza, gastronomía y recorridos.
+                    </p>
+
+                </div>
+
+                <div class="actividad-grid">
+
+                    <article class="actividad">
+                        <div class="actividad-icono">🥾</div>
+                        <h3>Caminatas</h3>
+                        <p>
+                            Recorrer diferentes espacios,
+                            senderos y paisajes.
+                        </p>
+                    </article>
+
+                    <article class="actividad">
+                        <div class="actividad-icono">🏛️</div>
+                        <h3>Visitas culturales</h3>
+                        <p>
+                            Conocer el patrimonio histórico
+                            y religioso.
+                        </p>
+                    </article>
+
+                    <article class="actividad">
+                        <div class="actividad-icono">📷</div>
+                        <h3>Fotografía</h3>
+                        <p>
+                            Capturar los paisajes y
+                            sitios representativos.
+                        </p>
+                    </article>
+
+                    <article class="actividad">
+                        <div class="actividad-icono">🦖</div>
+                        <h3>Prehistoria</h3>
+                        <p>
+                            Conocer experiencias relacionadas
+                            con dinosaurios.
+                        </p>
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="seccion gastronomia" id="gastronomia">
+
+            <div class="contenedor">
+
+                <div class="titulo">
+
+                    <small>
+                        07 · GASTRONOMÍA LOCAL
+                    </small>
+
+                    <h2>
+                        Sabores de Sáchica
+                    </h2>
+
+                    <p>
+                        La gastronomía también forma parte
+                        de la experiencia turística.
+                    </p>
+
+                </div>
+
+                <div class="gastronomia-grid">
+
+                    <article class="gastronomia-principal">
+
+                        <img
+                            src="imagenes/gallinaa.webp"
+                            alt="Gastronomía"
+                        >
+
+                        <div class="gastronomia-texto">
+
+                            <h3>
+                                Gastronomía tradicional
+                            </h3>
+
+                            <p>
+                                Conocer el municipio también significa
+                                disfrutar sus preparaciones,
+                                costumbres y sabores.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+                    <div class="gastronomia-lista">
+
+                        <article class="plato">
+                            <h3>Gallina</h3>
+                            <p>
+                                Una preparación relacionada con
+                                las tradiciones gastronómicas
+                                mencionadas en el proyecto.
+                            </p>
+                        </article>
+
+                        <article class="plato">
+                            <h3>Productos de la región</h3>
+                            <p>
+                                Aquí puedes agregar otros platos
+                                o productos típicos después de
+                                verificar la información.
+                            </p>
+                        </article>
+
+                        <article class="plato">
+                            <h3>Restaurantes</h3>
+                            <p>
+                                La revista puede enlazar esta parte
+                                con el directorio de restaurantes.
+                            </p>
+                        </article>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="seccion cultura" id="cultura">
+
+            <div class="contenedor">
+
+                <div class="titulo">
+
+                    <small>
+                        08 · CULTURA Y TRADICIONES
+                    </small>
+
+                    <h2>
+                        Identidad de Sáchica
+                    </h2>
+
+                    <p>
+                        Tradiciones, celebraciones y formas
+                        de vida hacen parte de la identidad local.
+                    </p>
+
+                </div>
+
+                <div class="cultura-grid">
+
+                    <article class="cultura-card">
+                        <div>⛪</div>
+                        <h3>Tradición religiosa</h3>
+                        <p>
+                            Las actividades religiosas hacen parte
+                            del patrimonio cultural del municipio.
+                        </p>
+                    </article>
+
+                    <article class="cultura-card">
+                        <div>🐔</div>
+                        <h3>Festival y gastronomía</h3>
+                        <p>
+                            Algunas celebraciones se relacionan
+                            con la gastronomía y las costumbres locales.
+                        </p>
+                    </article>
+
+                    <article class="cultura-card">
+                        <div>🌱</div>
+                        <h3>Vida campesina</h3>
+                        <p>
+                            La agricultura forma parte importante
+                            del paisaje y la vida del territorio.
+                        </p>
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="seccion recomendaciones" id="recomendaciones">
+
+            <div class="contenedor">
+
+                <div class="titulo">
+
+                    <small>
+                        09 · RECOMENDACIONES AL TURISTA
+                    </small>
+
+                    <h2>
+                        Disfruta tu visita
+                    </h2>
+
+                </div>
+
+                <div class="recomendaciones-grid">
+
+                    <article class="recomendacion">
+                        <div class="recomendacion-icono">👕</div>
+                        <div>
+                            <h3>Ropa adecuada</h3>
+                            <p>
+                                Consulta las condiciones del clima
+                                antes de comenzar el recorrido.
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="recomendacion">
+                        <div class="recomendacion-icono">🌿</div>
+                        <div>
+                            <h3>Cuida el entorno</h3>
+                            <p>
+                                No arrojes basura y respeta
+                                los espacios naturales.
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="recomendacion">
+                        <div class="recomendacion-icono">🏛️</div>
+                        <div>
+                            <h3>Respeta el patrimonio</h3>
+                            <p>
+                                Protege los lugares históricos,
+                                arqueológicos y religiosos.
+                            </p>
+                        </div>
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="seccion directorio" id="directorio">
+
+            <div class="contenedor">
+
+                <div class="titulo">
+
+                    <small>
+                        10 · DIRECTORIO BÁSICO
+                    </small>
+
+                    <h2>
+                        Planea tu estadía
+                    </h2>
+
+                    <p>
+                        Información que puede facilitar
+                        la organización del viaje.
+                    </p>
+
+                </div>
+
+                <div class="directorio-grid">
+
+                    <article class="directorio-card">
+                        <span>🏨</span>
+                        <h3>Hoteles</h3>
+                        <p>
+                            Consulta opciones de alojamiento
+                            dentro del municipio.
+                        </p>
+                    </article>
+
+                    <article class="directorio-card">
+                        <span>🍽️</span>
+                        <h3>Restaurantes</h3>
+                        <p>
+                            Encuentra lugares para disfrutar
+                            la gastronomía durante la visita.
+                        </p>
+                    </article>
+
+                    <article class="directorio-card">
+                        <span>🧭</span>
+                        <h3>Turismo</h3>
+                        <p>
+                            Información de rutas, actividades
+                            y servicios para visitantes.
+                        </p>
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="seccion galeria" id="galeria">
+
+            <div class="contenedor">
+
+                <div class="titulo">
+
+                    <small>
+                        11 · GALERÍA DE IMÁGENES
+                    </small>
+
+                    <h2>
+                        Sáchica en fotografías
+                    </h2>
+
+                    <p>
+                        Una mirada visual a algunos de los
+                        lugares del municipio.
+                    </p>
+
+                </div>
+
+                <div class="galeria-grid">
+
+                    <div class="foto">
+                        <img src="imagenes/principal.jpeg" alt="Sáchica">
+                        <span>SÁCHICA</span>
+                    </div>
+
+                    <div class="foto">
+                        <img src="imagenes/templo.webp" alt="Templo">
+                        <span>TEMPLO</span>
+                    </div>
+
+                    <div class="foto">
+                        <img src="imagenes/pinturas.webp" alt="Pinturas">
+                        <span>PINTURAS</span>
+                    </div>
+
+                    <div class="foto">
+                        <img src="imagenes/calvario.jpg" alt="Calvario">
+                        <span>CALVARIO</span>
+                    </div>
+
+                    <div class="foto">
+                        <img src="imagenes/dino.jpg" alt="Prehistoria">
+                        <span>PREHISTORIA</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="contraportada">
+
+            <img
+                src="imagenes/principal.jpeg"
+                alt="Sáchica Boyacá"
+            >
+
+            <div class="contraportada-contenido">
+
+                <small>
+                    12 · CONTRAPORTADA
+                </small>
+
+                <h2>
+                    Descubre Sáchica
+                </h2>
+
+                <p>
+                    Un lugar donde la historia, la cultura,
+                    el patrimonio, la naturaleza y las tradiciones
+                    se unen para crear una experiencia diferente.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer>
+        SÁCHICA MAGAZINE · REVISTA TURÍSTICA · BOYACÁ · COLOMBIA · 2026
+    </footer>
+
+    <script>
+
+        const menuBtn = document.getElementById("menuBtn");
+        const menuLista = document.getElementById("menuLista");
+
+        menuBtn.addEventListener("click", () => {
+            menuLista.classList.toggle("activo");
+        });
+
+        document.querySelectorAll("#menuLista a").forEach(enlace => {
+
+            enlace.addEventListener("click", () => {
+                menuLista.classList.remove("activo");
+            });
+
+        });
+
+    </script>
+
+</body>
+</html>
